@@ -6,27 +6,52 @@ const timestamp = document.getElementById('timestamp');
 
 // Play & pause video functions 
 const toggleVideoStatus= ()=>{
-  return true;
+  if(video.paused){
+    video.play();
+
+  } else {
+    video.pause();
+  }
 }
 
 // update play/pause icon 
 const updatePlayIcon = ()=>{
-  return true;
+  if(video.paused){
+    play.innerHTML = '<i class="fa fa-play fa-2x"></i>';
+  } else {
+    play.innerHTML = `<i class="fa fa-pause fa-2x"></i>`;
+  }
 }
 
 // Update progress & timestamp
 const updateProgress=()=>{
-  return true;
+  progress.value = (video.currentTime / video.duration) * 100;
+  
+  // Get minutes
+  let mins = Math.floor(video.currentTime / 60); 
+  if(mins < 10) {
+    mins = `0` + String(mins);
+  }
+
+    // Get seconds
+    let secs = Math.floor(video.currentTime % 60); 
+    if(secs < 10) {
+      secs = `0` + String(secs);
+    }
+
+    timestamp.innerHTML = `${mins}:${secs}`;
 }
 
 // set video time to progress
-const setVideoProgress = ()=>{
-  return true;
+const setVideoProgress = (e)=>{
+  console.log({e})
+  video.currentTime = (+progress.value * video.duration) / 100
 }
 
 // Stop video 
 const stopVideo = ()=>{
-  return true;
+  video.currentTime = 0;
+  video.pause();
 }
 
 // Event listeners 
