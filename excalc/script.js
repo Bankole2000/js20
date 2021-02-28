@@ -41,3 +41,12 @@ function calculate(){
 
 calculate();
 
+// fetch(`https://someapi.com/${endpoint}`)
+//   .then(res => res.json())
+//   .then(data => {
+//     // You can assign new variable names in destructuring
+//     const {apis_really: really, should_use: use, better_names: names} = data
+//     // i.e really = apis_really, use = should_use, names = better_names
+//     console.log({really, use, names})
+//     // Do whatever else here
+//   })
